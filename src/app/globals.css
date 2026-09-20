@@ -1,26 +1,224 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* `compact:` targets phones and tablets, below the desktop navigation breakpoint. */
+@custom-variant compact (@media (max-width: 1279.98px));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ------------------------------------------------------------------ */
+/*  Design tokens                                                      */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-navy-950: #040814;
+  --color-navy-900: #060d1f;
+  --color-navy-850: #081226;
+  --color-navy-800: #0a1630;
+  --color-navy-700: #0e2148;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-ink: #e9effc;
+  --color-muted: #9fb0cf;
+  --color-line: rgba(84, 132, 255, 0.24);
+
+  --color-brand: #2f6bff;
+  --color-brand-cyan: #22c8f5;
+  --color-brand-violet: #6a5cff;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-ping-slow: ping-slow 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes ping-slow {
+    75%,
+    100% {
+      transform: scale(1.55);
+      opacity: 0;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-mrs), "Brush Script MT", cursive;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Type scale                                                         */
+/*  One knob for ALL text sizes (layout / spacing are not affected).   */
+/*  `fs-82` means "0.82rem × --type-scale", never smaller than the     */
+/*  floor so tiny labels stay readable.                                */
+/* ------------------------------------------------------------------ */
+:root {
+  /* A readable, native mobile type scale. Desktop keeps the established compact scale below. */
+  --type-scale: 1;
+  --fs-floor: 0.7rem;
+}
+
+@utility fs-* {
+  font-size: max(var(--fs-floor), calc(--value(integer) * 0.01rem * var(--type-scale)));
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Keep the existing fluid desktop proportions without scaling a mobile canvas. */
+  html {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1280px) {
+    html {
+      font-size: clamp(0.875rem, 1.1111vw, 1.0625rem);
+    }
+
+    :root {
+      --type-scale: 0.86;
+      --fs-floor: 0.64rem;
+    }
+  }
+
+  body {
+    overflow-x: clip;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    background-color: var(--color-navy-950);
+    background-image:
+      radial-gradient(50rem 30rem at 90% 46rem, rgba(37, 99, 235, 0.11), transparent 70%),
+      radial-gradient(46rem 28rem at 6% 80rem, rgba(14, 165, 233, 0.07), transparent 70%),
+      radial-gradient(50rem 30rem at 92% 112rem, rgba(99, 102, 241, 0.08), transparent 70%);
+    background-repeat: no-repeat;
+  }
+
+  ::selection {
+    background: rgba(47, 107, 255, 0.45);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-cyan);
+    outline-offset: 3px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable component styles                                          */
+/* ------------------------------------------------------------------ */
+@layer components {
+  /* Small letter-spaced label that sits above section headings */
+  .eyebrow {
+    font-size: max(var(--fs-floor), calc(0.76rem * var(--type-scale)));
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+
+  /* Blue → cyan gradient used for highlighted words in headings */
+  .text-gradient-brand {
+    background-image: linear-gradient(90deg, #1fd0f8 0%, #2b8cff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Glassy bordered card surface */
+  .surface-glass {
+    border: 1px solid rgba(96, 150, 255, 0.2);
+    background: linear-gradient(180deg, rgba(28, 52, 104, 0.38), rgba(10, 22, 50, 0.55));
+    backdrop-filter: blur(6px);
+  }
+
+  /* Framed feature card (software + IoT) */
+  .card-frame {
+    border: 1px solid rgba(96, 150, 255, 0.3);
+    box-shadow:
+      0 0 0 1px rgba(60, 110, 255, 0.06),
+      0 18px 50px -22px rgba(40, 100, 255, 0.5);
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  /* Cards stay information-dense without competing with page headings on narrow screens. */
+  @media (max-width: 1279.98px) {
+    .card-frame,
+    .surface-glass {
+      --type-scale: 0.94;
+    }
+  }
+  .card-frame:hover {
+    transform: translateY(-5px);
+    border-color: rgba(120, 175, 255, 0.6);
+    box-shadow:
+      0 0 0 1px rgba(90, 140, 255, 0.14),
+      0 26px 60px -20px rgba(50, 120, 255, 0.65);
+  }
+
+  /* Card photo: per-image crop scale via --img-scale, subtle zoom on hover */
+  .zoom-img {
+    scale: var(--img-scale, 1);
+    transition: scale 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .zoom-img {
+    scale: calc(var(--img-scale, 1) * 1.06);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Accessibility: honour reduced-motion preference                    */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Inner pages                                                        */
+/* ------------------------------------------------------------------ */
+@layer components {
+  /* Faint blueprint grid behind page heroes */
+  .bg-grid-faint {
+    background-image:
+      linear-gradient(rgba(120, 160, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120, 160, 255, 0.07) 1px, transparent 1px);
+    background-size: 3.2rem 3.2rem;
+  }
+}
+
+/*
+ * Projects filter: the cards are server-rendered and always in the page; the tab buttons only
+ * flip data-filter on the wrapper. Unlayered on purpose so it wins over utility display classes.
+ */
+[data-filter="software"] [data-cat="iot"],
+[data-filter="iot"] [data-cat="software"] {
+  display: none;
 }
