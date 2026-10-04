@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { ChevronDown, Mail } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { company } from "@/data/site";
@@ -64,6 +64,20 @@ export default function ContactForm({ mode, interests, defaultInterest = "" }: C
   const formRef = useRef<HTMLFormElement>(null);
   const [notice, setNotice] = useState("");
   const isSupport = mode === "support";
+
+  /**
+   * Pre-select the dropdown from `?interest=...` (the "Get a Quote" / "Request a demo" buttons
+   * link that way). This is read here, after hydration, rather than from the page's
+   * `searchParams` on the server: reading search params on the server would make the whole
+   * /contact page render on demand for every visitor, instead of being served as a static file.
+   */
+  useEffect(() => {
+    const select = formRef.current?.elements.namedItem("interest");
+    if (!(select instanceof HTMLSelectElement) || select.value) return;
+
+    const wanted = new URLSearchParams(window.location.search).get("interest");
+    if (wanted && interests.includes(wanted)) select.value = wanted;
+  }, [interests]);
 
   function compose() {
     const form = formRef.current;

@@ -307,6 +307,7 @@ export const footerLinks = {
     { label: "IoT & Automation", href: "/iot-products" },
     { label: "AI & Computer Vision", href: "/solutions#ai-computer-vision" },
     { label: "Embedded Systems", href: "/solutions#embedded-systems" },
+    { label: "Business Automation", href: "/solutions#business-automation" },
     { label: "Cloud & DevOps", href: "/solutions#cloud-devops" },
     { label: "Maintenance & Support", href: "/support" },
   ],

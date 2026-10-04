@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import { simplePageGraph } from "@/lib/schema";
 import Link from "next/link";
-import { ArrowRight, Check, Cloud, Cpu, ScanEye, type LucideIcon } from "lucide-react";
+import { ArrowRight, Check, Cloud, Cpu, ScanEye, Workflow, type LucideIcon } from "lucide-react";
 import CtaBanner from "@/components/sections/CtaBanner";
 import Button from "@/components/ui/Button";
 import FeatureCard from "@/components/ui/FeatureCard";
@@ -88,6 +88,20 @@ const capabilities: {
       "Wireless connectivity such as Wi-Fi and Bluetooth",
       "Device-to-cloud and mobile app integration",
       "Prototyping through to production support",
+    ],
+  },
+  {
+    id: "business-automation",
+    icon: Workflow,
+    title: "Business Automation",
+    text: "Software that takes over the manual, repetitive parts of running your organisation.",
+    color: "#2dd4a7",
+    points: [
+      "Replace paper registers and spreadsheets with one system",
+      "Automatic approvals, reminders and status updates",
+      "Scheduled reports instead of manual compilation",
+      "Integrations with payment, messaging and accounting tools",
+      "Dashboards that show the numbers without manual entry",
     ],
   },
   {

@@ -3,7 +3,9 @@ import { allProducts, productHref, visualFor, type ProductDetail } from "@/data/
 import { company } from "@/data/site";
 import {
   absoluteUrl,
+  AREAS_SERVED,
   BRAND_ALIASES,
+  BUSINESS_PROFILE,
   SITE_LANG,
   SITE_NAME,
   SITE_URL,
@@ -20,6 +22,28 @@ export const SITE_ID = `${SITE_URL}/#website`;
 const PHONE_INTL = "+91 70584 09290";
 
 const graph = (nodes: Node[]): Node => ({ "@context": "https://schema.org", "@graph": nodes });
+
+/**
+ * The company's postal address. The city, region and country are always claimed because they
+ * are stated all over the visible site; the street address and postcode only appear once they
+ * have been filled in with verified values (see BUSINESS_PROFILE in lib/seo.ts).
+ */
+function postalAddressNode(): Node {
+  return {
+    "@type": "PostalAddress",
+    ...(BUSINESS_PROFILE.streetAddress && { streetAddress: BUSINESS_PROFILE.streetAddress }),
+    addressLocality: "Pune",
+    addressRegion: "Maharashtra",
+    ...(BUSINESS_PROFILE.postalCode && { postalCode: BUSINESS_PROFILE.postalCode }),
+    addressCountry: "IN",
+  };
+}
+
+/** True only when a real street address is on file, which is what LocalBusiness requires. */
+const hasVerifiedAddress = () =>
+  BUSINESS_PROFILE.localBusiness &&
+  !!BUSINESS_PROFILE.streetAddress &&
+  !!BUSINESS_PROFILE.postalCode;
 
 /* ------------------------------------------------------------------ */
 /*  Site-wide: organisation + website                                  */
@@ -46,12 +70,10 @@ export function organizationNode(): Node {
     slogan: company.tagline,
     email: company.email,
     telephone: PHONE_INTL,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Pune",
-      addressRegion: "Maharashtra",
-      addressCountry: "IN",
-    },
+    address: postalAddressNode(),
+    // Where the company actually works, which is what local searches are matched against.
+    areaServed: AREAS_SERVED.map((area) => ({ "@type": area.type, name: area.name })),
+    ...(BUSINESS_PROFILE.foundingDate && { foundingDate: BUSINESS_PROFILE.foundingDate }),
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -109,8 +131,35 @@ export function websiteNode(): Node {
   };
 }
 
+/**
+ * LocalBusiness for the Pune office, emitted only once a verified street address exists.
+ * It deliberately carries no `aggregateRating`, `review` or `priceRange`: those must come from
+ * real data, and inventing them is exactly what triggers a structured-data manual action.
+ */
+export function localBusinessNode(): Node {
+  return {
+    "@type": "ProfessionalService",
+    "@id": `${SITE_URL}/#localbusiness`,
+    name: SITE_NAME,
+    url: absoluteUrl("/"),
+    image: absoluteUrl("/og/home"),
+    logo: absoluteUrl("/images/logo-tight.png"),
+    description: pageSeo.home.description,
+    telephone: PHONE_INTL,
+    email: company.email,
+    address: postalAddressNode(),
+    areaServed: AREAS_SERVED.map((area) => ({ "@type": area.type, name: area.name })),
+    parentOrganization: { "@id": ORG_ID },
+  };
+}
+
 /** Emitted once from the root layout, so every page carries the brand entity. */
-export const siteGraph = (): Node => graph([organizationNode(), websiteNode()]);
+export const siteGraph = (): Node =>
+  graph([
+    organizationNode(),
+    websiteNode(),
+    ...(hasVerifiedAddress() ? [localBusinessNode()] : []),
+  ]);
 
 /* ------------------------------------------------------------------ */
 /*  Building blocks                                                    */

@@ -5,6 +5,7 @@ import { listingGraph } from "@/lib/schema";
 import { ArrowRight, Headset, Puzzle, ShieldCheck, Smartphone } from "lucide-react";
 import CtaBanner from "@/components/sections/CtaBanner";
 import ProductShowcase from "@/components/sections/ProductShowcase";
+import ServiceIntro from "@/components/sections/ServiceIntro";
 import Button from "@/components/ui/Button";
 import Faq from "@/components/ui/Faq";
 import FeatureCard from "@/components/ui/FeatureCard";
@@ -14,8 +15,19 @@ import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Steps from "@/components/ui/Steps";
 import { productHref, softwareDetails, softwareSteps, visualFor } from "@/data/products";
+import { listingAbout } from "@/data/seo";
 
 export const metadata: Metadata = pageMetadata("software");
+
+/** Descriptive link text (what people actually search for) rather than "click here". */
+const introLinks = [
+  { label: "Hospital management software", href: "/software/hospital-management-system" },
+  { label: "School management software", href: "/software/school-management-system" },
+  { label: "Gym management software", href: "/software/gym-management-system" },
+  { label: "Custom software development", href: "/software/custom-software-development" },
+  { label: "IoT products and smart devices", href: "/iot-products" },
+  { label: "Solutions by industry", href: "/solutions" },
+];
 
 const whyUs = [
   {
@@ -56,6 +68,14 @@ const faqs = [
   {
     q: "How long does implementation take?",
     a: "It depends on the modules and the amount of data to set up. After the consultation we share a clear plan and timeline before any work begins.",
+  },
+  {
+    q: "Do you build web and mobile applications as well?",
+    a: "Yes. Web application development and mobile application development for Android and iOS are part of our custom software development work, along with dashboards, reports and integrations with payment, messaging and accounting systems.",
+  },
+  {
+    q: "Can you automate our manual processes?",
+    a: "Yes. Business automation is a large part of what we do: replacing manual registers, spreadsheets and repeated data entry with software that handles approvals, reminders and routine tasks on its own. Tell us the process and we will suggest where automation will save the most time.",
   },
   {
     q: "Do you only work with customers in Pune?",
@@ -114,6 +134,19 @@ export default function SoftwarePage() {
 
         <ProductShowcase products={softwareDetails} secondaryLabel="Request a Demo" />
       </Section>
+
+      {/* -------------------------------------------------------- */}
+      {/*  Readable overview of what we build                        */}
+      {/* -------------------------------------------------------- */}
+      <ServiceIntro
+        id="about-software"
+        eyebrow="About our software"
+        title={listingAbout.software.title}
+        highlight={listingAbout.software.highlight}
+        paragraphs={listingAbout.software.paragraphs}
+        links={introLinks}
+        linksHeading="Explore"
+      />
 
       {/* -------------------------------------------------------- */}
       {/*  Why our software                                          */}

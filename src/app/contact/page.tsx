@@ -52,10 +52,13 @@ const steps = [
   },
 ];
 
-export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
-  const { interest } = await searchParams;
-  const defaultInterest = typeof interest === "string" ? interest : "";
-
+/**
+ * Contact page. It takes no `searchParams`, which is what keeps it a static file instead of a
+ * page rendered on demand for every visit – a faster first byte on one of the site's most
+ * important pages. The `?interest=` pre-selection still works: the form reads it in the
+ * browser (see ContactForm).
+ */
+export default function ContactPage() {
   return (
     <>
       <JsonLd data={simplePageGraph("contact", "ContactPage")} />
@@ -158,7 +161,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
             <p className="mt-[0.4rem] mb-[1.3rem] fs-95 leading-[1.6] text-[#9db0d0]">
               Fields marked with * are required.
             </p>
-            <ContactForm mode="contact" interests={interestOptions} defaultInterest={defaultInterest} />
+            <ContactForm mode="contact" interests={interestOptions} />
           </div>
         </div>
       </Section>

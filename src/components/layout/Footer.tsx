@@ -9,13 +9,14 @@ import {
   YouTubeIcon,
 } from "@/components/ui/BrandIcons";
 import { company, footerLinks } from "@/data/site";
+import { footerSocialProfiles } from "@/lib/seo";
 
-const socials = [
-  { label: "LinkedIn", href: "https://www.linkedin.com", Icon: LinkedInIcon },
-  { label: "YouTube", href: "https://www.youtube.com", Icon: YouTubeIcon },
-  { label: "Instagram", href: "https://www.instagram.com", Icon: InstagramIcon },
-  { label: "Facebook", href: "https://www.facebook.com", Icon: FacebookIcon },
-];
+const socialIcons = {
+  LinkedIn: LinkedInIcon,
+  YouTube: YouTubeIcon,
+  Instagram: InstagramIcon,
+  Facebook: FacebookIcon,
+} as const;
 
 const linkClass = "fs-86 text-[#b5c2dd] transition-colors duration-200 hover:text-white";
 const headingClass = "fs-92 font-semibold text-white";
@@ -89,21 +90,31 @@ export default function Footer() {
               </li>
             </ul>
 
-            <ul className="mt-[1.3rem] flex items-center gap-[0.95rem]">
-              {socials.map(({ label, href, Icon }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Infiotix on ${label}`}
-                    className="block transition-transform duration-300 hover:-translate-y-0.5 hover:scale-110"
-                  >
-                    <Icon className="size-[1.8rem]" />
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {/*
+              Only profiles that really exist are listed (see `socialProfiles` in lib/seo.ts).
+              Until one is added nothing is rendered here, which is deliberate: a link to a
+              platform's home page is a dead end for visitors and tells search engines nothing.
+            */}
+            {footerSocialProfiles.length > 0 && (
+              <ul className="mt-[1.3rem] flex items-center gap-[0.95rem]">
+                {footerSocialProfiles.map(({ platform, url }) => {
+                  const Icon = socialIcons[platform];
+                  return (
+                    <li key={url}>
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${company.name} on ${platform}`}
+                        className="block transition-transform duration-300 hover:-translate-y-0.5 hover:scale-110"
+                      >
+                        <Icon className="size-[1.8rem]" />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </div>
 
           {/* Connected-city visual (desktop) */}

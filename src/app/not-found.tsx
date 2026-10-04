@@ -1,7 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Section from "@/components/ui/Section";
+import { SITE_NAME } from "@/lib/seo";
+
+/**
+ * Without this, the 404 page inherits the root layout's metadata – including the home page's
+ * title, description and `rel="canonical"`. A canonical pointing at the home page tells search
+ * engines that every mistyped URL *is* the home page, so it is cleared here. `alternates: {}`
+ * removes the inherited canonical (metadata is merged shallowly, one key at a time).
+ */
+export const metadata: Metadata = {
+  title: { absolute: `Page not found | ${SITE_NAME}` },
+  description: "This page could not be found. Browse our software, IoT products and support pages instead.",
+  alternates: {},
+  robots: { index: false, follow: true },
+};
 
 const quickLinks = [
   { label: "About", href: "/about" },

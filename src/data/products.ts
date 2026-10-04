@@ -751,6 +751,7 @@ export const interestOptions: string[] = [
   ...allProducts.map((product) => product.name),
   "AI & Computer Vision",
   "Embedded Systems",
+  "Business Automation",
   "Cloud & DevOps",
   "Something else",
 ];

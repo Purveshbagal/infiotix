@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
+import { simplePageGraph } from "@/lib/schema";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
@@ -35,6 +37,7 @@ const groups: { title: string; links: { label: string; href: string }[] }[] = [
 export default function SitemapPage() {
   return (
     <>
+      <JsonLd data={simplePageGraph("sitemap")} />
       <PageHero
         eyebrow="Sitemap"
         title="Find Your Way"

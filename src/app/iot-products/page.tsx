@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import CtaBanner from "@/components/sections/CtaBanner";
 import ProductShowcase from "@/components/sections/ProductShowcase";
+import ServiceIntro from "@/components/sections/ServiceIntro";
 import Button from "@/components/ui/Button";
 import Faq from "@/components/ui/Faq";
 import FeatureCard from "@/components/ui/FeatureCard";
@@ -25,8 +26,19 @@ import Section from "@/components/ui/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Steps from "@/components/ui/Steps";
 import { iotDetails, iotSteps, productHref, visualFor } from "@/data/products";
+import { listingAbout } from "@/data/seo";
 
 export const metadata: Metadata = pageMetadata("iotProducts");
+
+/** Descriptive link text (what people actually search for) rather than "click here". */
+const introLinks = [
+  { label: "Smart door lock", href: "/iot-products/smart-door-lock" },
+  { label: "Water tank level monitor", href: "/iot-products/water-tank-level-monitor" },
+  { label: "Home automation system", href: "/iot-products/home-automation" },
+  { label: "Smart video door bell", href: "/iot-products/smart-door-bell" },
+  { label: "Custom software development", href: "/software/custom-software-development" },
+  { label: "Embedded systems and AI capabilities", href: "/solutions#embedded-systems" },
+];
 
 const whyUs = [
   {
@@ -104,6 +116,10 @@ const faqs = [
     a: "Yes. Our team handles installation and set-up, and shows you how to use the app.",
   },
   {
+    q: "Do you build custom IoT solutions?",
+    a: "Yes. We build the firmware, the mobile app and the cloud side ourselves, so we also take on custom IoT projects: sensors and controllers for a specific process, device-to-cloud dashboards, and automation that reacts to what the sensors report. Tell us what you want to measure or control.",
+  },
+  {
     q: "What if something stops working?",
     a: "Contact our support team. We will help you get it working again as quickly as possible.",
   },
@@ -155,6 +171,19 @@ export default function IoTProductsPage() {
 
         <ProductShowcase products={iotDetails} secondaryLabel="Get a Quote" />
       </Section>
+
+      {/* -------------------------------------------------------- */}
+      {/*  Readable overview of what we build                        */}
+      {/* -------------------------------------------------------- */}
+      <ServiceIntro
+        id="about-iot"
+        eyebrow="About our IoT work"
+        title={listingAbout.iotProducts.title}
+        highlight={listingAbout.iotProducts.highlight}
+        paragraphs={listingAbout.iotProducts.paragraphs}
+        links={introLinks}
+        linksHeading="Explore"
+      />
 
       {/* -------------------------------------------------------- */}
       {/*  Why our IoT                                               */}

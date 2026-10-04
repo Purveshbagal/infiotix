@@ -118,7 +118,7 @@ export const pageSeo = {
     path: "/solutions",
     title: "Software & IoT Solutions for Every Industry | Infiotix",
     description:
-      "Software and IoT solutions for healthcare, education, fitness, homes, agriculture, retail and government, plus AI, embedded and cloud. By Infiotix, Pune.",
+      "Software and IoT solutions for healthcare, education, fitness, homes, agriculture and retail, plus AI, embedded systems, business automation and cloud. Pune.",
     keywords: [
       "software solutions for hospitals",
       "software solutions for schools",
@@ -126,6 +126,8 @@ export const pageSeo = {
       "IoT for agriculture",
       "AI and computer vision",
       "embedded systems",
+      "business automation",
+      "business process automation company",
       "cloud and DevOps",
     ],
     og: {
@@ -465,6 +467,34 @@ export const homeAbout = {
     "Infiotix Technologies (also known as Infiotix or Infiotix Technology) is a Pune-based company that designs, builds and supports software and IoT products. Our hospital management software, school management software and gym management software help organisations run day-to-day operations from one system, while our smart door locks, water tank level monitors, home automation and video door bells make homes and workplaces safer and more connected.",
     "Have something different in mind? We also build custom software for businesses of every size, and stay with you after launch with training, updates and 24/7 support.",
   ],
+};
+
+/* ------------------------------------------------------------------ */
+/*  Listing pages: visible overview prose                              */
+/* ------------------------------------------------------------------ */
+/**
+ * Plain-prose introductions for the two listing pages. Both pages were strong on cards, icons
+ * and headings but light on readable sentences, and sentences are what a search engine actually
+ * reads. Every claim here is one the site already makes elsewhere (see data/products.ts) –
+ * nothing new is promised.
+ */
+export const listingAbout: Record<"software" | "iotProducts", { title: string; highlight: string; paragraphs: string[] }> = {
+  software: {
+    title: "Software development company",
+    highlight: "in Pune",
+    paragraphs: [
+      "Infiotix Technologies is a software development company in Pune building business management software and custom applications. Alongside our ready-to-use Hospital, School and Gym Management Systems, we take on custom software development: web application development for portals and internal tools, mobile application development for Android and iOS, reporting dashboards, and integrations with payment, messaging and accounting systems.",
+      "A large part of our work is business automation: replacing manual registers, spreadsheets and repeated data entry with software that handles approvals, reminders and day-to-day tasks on its own. We scope the work with you first, build in stages with regular demos, deploy to reliable cloud hosting, train your team at go-live and stay available with 24/7 support afterwards.",
+    ],
+  },
+  iotProducts: {
+    title: "IoT solutions company",
+    highlight: "in Pune",
+    paragraphs: [
+      "Infiotix Technologies is an IoT solutions company in Pune that designs, builds, installs and supports connected devices. Our Smart Door Lock, Water Tank Level Monitor, Home Automation and Smart Door Bell are ready to order, and each one is installed and set up by our own team rather than handed over in a box.",
+      "Because we build the embedded firmware, the mobile app and the cloud side ourselves, we also take on custom IoT projects: sensors and controllers for a specific process, device-to-cloud dashboards, and automation that reacts to what the sensors report. If you need something that is not on this page, tell us what you want to measure or control and we will suggest a practical approach.",
+    ],
+  },
 };
 
 export const homeFaqs: { q: string; a: string }[] = [

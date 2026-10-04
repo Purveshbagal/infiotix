@@ -63,8 +63,14 @@ export default function Hero() {
             <span className="text-gradient-brand">Smarter</span> Solutions
           </h1>
 
+          {/*
+            The headline above is deliberately a slogan, so this first paragraph is where the
+            company actually names itself. Keeping "Infiotix Technologies" in the visible copy
+            above the fold is what tells a search engine which company the page is about –
+            the <title> alone is a weaker signal.
+          */}
           <p className="animate-fade-up mt-[0.8rem] max-w-[34rem] fs-102 leading-[1.55] text-slate-200/95 [animation-delay:170ms] xl:max-w-none xl:fs-108 xl:leading-[1.46]">
-            We build intelligent software and IoT solutions
+            Infiotix Technologies builds intelligent software and IoT solutions
             <br className="hidden sm:block" /> for a smarter, safer and more connected world.
           </p>
 
