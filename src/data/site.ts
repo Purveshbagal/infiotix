@@ -52,7 +52,7 @@ export const company = {
   phoneHref: "tel:+917058409290",
   whatsappHref: "https://wa.me/917058409290",
   email: "info@infiotix.com",
-  location: "Pune, Maharashtra, India",
+  location: "Ahilyanagar, Maharashtra",
 } as const;
 
 /* ------------------------------------------------------------------ */

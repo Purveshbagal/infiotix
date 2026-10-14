@@ -63,7 +63,7 @@ export default function ContactPage() {
     <>
       <JsonLd data={simplePageGraph("contact", "ContactPage")} />
       <PageHero
-        eyebrow="Contact"
+        eyebrow="Contact Infiotix Technologies"
         title="Let's Talk About"
         highlight="Your Project"
         breadcrumbs={[{ label: "Contact" }]}

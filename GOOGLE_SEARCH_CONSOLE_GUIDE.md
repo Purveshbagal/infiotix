@@ -140,7 +140,7 @@ click **Test live URL** — that shows what Googlebot sees right now, not what i
 Paste `https://infiotix.com` into **https://search.google.com/test/rich-results**:
 
 - [ ] **0 errors**
-- [ ] `Organization` detected, with `areaServed` (Pune, Maharashtra, India)
+- [ ] `Organization` detected, with `areaServed` (Ahilyanagar, Maharashtra, India) and `sameAs` (Instagram)
 - [ ] `FAQPage` detected
 - [ ] `BreadcrumbList` detected
 - [ ] No `aggregateRating` anywhere ← correct; none should exist

@@ -10,7 +10,7 @@ const anchors: Record<string, string> = {
   "hospital-management-system": "Hospital management software",
   "school-management-system": "School management software",
   "gym-management-system": "Gym management software",
-  "custom-software-development": "Custom software development",
+  "custom-software-development": "Custom software, CRM & website development",
   "smart-door-lock": "Smart door lock",
   "water-tank-level-monitor": "Water tank level monitor",
   "home-automation": "Home automation system",
@@ -37,7 +37,7 @@ export default function BrandIntro() {
             id="about-infiotix-title"
             eyebrow="About Infiotix"
             title="Software & IoT solutions from"
-            highlight="Infiotix Technologies, Pune"
+            highlight="Infiotix Technologies, Ahilyanagar"
           />
           <div className="mt-[1.2rem] grid gap-[0.9rem]">
             {homeAbout.paragraphs.map((paragraph) => (

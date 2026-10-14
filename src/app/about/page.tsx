@@ -33,7 +33,7 @@ import { cn } from "@/lib/cn";
 export const metadata: Metadata = pageMetadata("about");
 
 const facts: { icon: LucideIcon; text: string }[] = [
-  { icon: MapPin, text: "Based in Pune, Maharashtra" },
+  { icon: MapPin, text: "Based in Ahilyanagar, Maharashtra" },
   { icon: Layers, text: "Software and IoT under one roof" },
   { icon: Headset, text: "24/7 support for every customer" },
 ];
@@ -48,7 +48,7 @@ const capabilities: {
   {
     icon: CodeXml,
     title: "Software Development",
-    text: "Hospital, school and gym management systems and fully custom software built around your workflow.",
+    text: "Hospital, school and gym management systems, CRM, custom websites and fully custom software built around your workflow.",
     color: "#4f8cff",
     href: "/software",
   },
@@ -144,7 +144,7 @@ export default function AboutPage() {
         title="We Build Technology That"
         highlight="Connects Lives"
         breadcrumbs={[{ label: "About" }]}
-        description="Infiotix Technologies is a Pune-based software and IoT company. We turn everyday business and home challenges into smart, reliable and connected solutions, from hospital software to smart door locks."
+        description="Infiotix Technologies is a software and IoT company based in Ahilyanagar, Maharashtra. We turn everyday business and home challenges into smart, reliable and connected solutions, from management software, CRM and websites to smart door locks."
         actions={
           <>
             <Button href="/contact" size="md">
@@ -211,7 +211,7 @@ export default function AboutPage() {
             <div className="mt-6 space-y-4 fs-105 leading-[1.8] text-[#b3c2df] xl:mt-[1.6rem]">
               <p>
                 Infiotix Technologies began with a simple belief: technology should make everyday life simpler,
-                safer and more connected. From our base in Pune, Maharashtra, we design and build software and
+                safer and more connected. From our base in Ahilyanagar (Ahmednagar), Maharashtra, we design and build software and
                 IoT products that solve real problems for hospitals, schools, gyms, homes and growing
                 businesses.
               </p>

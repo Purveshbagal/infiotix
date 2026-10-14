@@ -24,7 +24,7 @@ const introLinks = [
   { label: "Hospital management software", href: "/software/hospital-management-system" },
   { label: "School management software", href: "/software/school-management-system" },
   { label: "Gym management software", href: "/software/gym-management-system" },
-  { label: "Custom software development", href: "/software/custom-software-development" },
+  { label: "Custom software, CRM & website development", href: "/software/custom-software-development" },
   { label: "IoT products and smart devices", href: "/iot-products" },
   { label: "Solutions by industry", href: "/solutions" },
 ];
@@ -71,15 +71,15 @@ const faqs = [
   },
   {
     q: "Do you build web and mobile applications as well?",
-    a: "Yes. Web application development and mobile application development for Android and iOS are part of our custom software development work, along with dashboards, reports and integrations with payment, messaging and accounting systems.",
+    a: "Yes. Website development, web application development and mobile application development for Android and iOS are part of our custom software development work, along with CRM software, dashboards, reports and integrations with payment, messaging and accounting systems.",
   },
   {
     q: "Can you automate our manual processes?",
     a: "Yes. Business automation is a large part of what we do: replacing manual registers, spreadsheets and repeated data entry with software that handles approvals, reminders and routine tasks on its own. Tell us the process and we will suggest where automation will save the most time.",
   },
   {
-    q: "Do you only work with customers in Pune?",
-    a: "We are based in Pune, Maharashtra, and work with clients remotely as well as on site where needed.",
+    q: "Do you only work with customers in Ahilyanagar?",
+    a: "We are based in Ahilyanagar, Maharashtra, and work with clients remotely as well as on site where needed.",
   },
 ];
 

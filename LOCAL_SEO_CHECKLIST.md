@@ -1,7 +1,8 @@
-# Local SEO Checklist — Infiotix Technologies, Pune
+# Local SEO Checklist — Infiotix Technologies, Ahilyanagar
 
-**Date:** 4 October 2026
-**Goal:** make Google recognise Infiotix Technologies as a real, distinct company in Pune — and
+**Date:** 4 October 2026 · **Updated:** 14 October 2026 (business location corrected to
+Ahilyanagar; Instagram profile added; CRM and website development added to the services)
+**Goal:** make Google recognise Infiotix Technologies as a real, distinct company in Ahilyanagar — and
 stop it suggesting "Infinix Technologies" instead.
 
 ---
@@ -31,11 +32,11 @@ secondary.
 | Brand alias declared ("Infiotix") | ✅ `alternateName` in Organization + WebSite schema |
 | Consistent phone — `+91 70584 09290` | ✅ Same in header, footer, contact page, schema |
 | Consistent email — `info@infiotix.com` | ✅ Same everywhere |
-| City/region/country in structured data | ✅ Pune / Maharashtra / IN |
-| **Service areas declared** | ✅ Added in this pass — Pune, Maharashtra, India |
+| City/region/country in structured data | ✅ Ahilyanagar (alternate name: Ahmednagar) / Maharashtra / IN |
+| **Service areas declared** | ✅ Ahilyanagar, Maharashtra, India |
 | Clear Contact page with all methods | ✅ `/contact` |
-| Pune mentioned naturally in page copy and titles | ✅ Throughout |
-| `sameAs` social profiles | ❌ **Empty — this is §1** |
+| Ahilyanagar mentioned naturally in page copy and titles | ✅ Throughout |
+| `sameAs` social profiles | 🟡 **Instagram only — more needed, this is §1** |
 | Street address in schema | ❌ **Not public yet — this is §3** |
 | `foundingDate` | ❌ **Not set — this is §4** |
 | LocalBusiness schema | ⏸️ Deliberately off until §3 is done |
@@ -55,9 +56,9 @@ Priority order. A LinkedIn company page is by far the most important for a B2B s
 
 | Platform | Priority | Notes |
 | --- | --- | --- |
-| **LinkedIn company page** | ⭐⭐⭐ Essential | Use the exact name "Infiotix Technologies". Add the logo, Pune location, and website link. **Have your team members list Infiotix as their employer** — employee connections are a strong authenticity signal. |
+| **LinkedIn company page** | ⭐⭐⭐ Essential | Use the exact name "Infiotix Technologies". Add the logo, Ahilyanagar location, and website link. **Have your team members list Infiotix as their employer** — employee connections are a strong authenticity signal. |
 | **Google Business Profile** | ⭐⭐⭐ Essential | Covered separately in §2 |
-| Instagram | ⭐⭐ Useful | Good for IoT product photos |
+| Instagram | ✅ Exists | [@infiotixtechnologies](https://www.instagram.com/infiotixtechnologies/) — already in `socialProfiles`. **Change its display name from "Infiotix Technology" to "Infiotix Technologies"** and put `https://infiotix.com` in the bio |
 | YouTube | ⭐⭐ Useful | Software demo videos would also help the product pages |
 | Facebook page | ⭐ Optional | Still carries weight for Indian local search |
 | GitHub organisation | ⭐⭐ Useful | Strong credibility signal for a software company |
@@ -69,17 +70,17 @@ Name:    Infiotix Technologies
 Phone:   +91 70584 09290
 Email:   info@infiotix.com
 Website: https://infiotix.com
-City:    Pune, Maharashtra, India
+City:    Ahilyanagar, Maharashtra, India
 ```
 
 ### Step 2 — add the URLs to the website
 
-Open `src/lib/seo.ts`, find `socialProfiles` (currently an empty array), and fill it in:
+Open `src/lib/seo.ts`, find `socialProfiles` (it currently holds the Instagram profile), and add each new one:
 
 ```ts
 export const socialProfiles: SocialProfile[] = [
   { platform: "LinkedIn",  url: "https://www.linkedin.com/company/YOUR-REAL-HANDLE" },
-  { platform: "Instagram", url: "https://www.instagram.com/YOUR-REAL-HANDLE" },
+  { platform: "Instagram", url: "https://www.instagram.com/infiotixtechnologies/" }, // already live
   { platform: "YouTube",   url: "https://www.youtube.com/@YOUR-REAL-HANDLE" },
   { platform: "Facebook",  url: "https://www.facebook.com/YOUR-REAL-HANDLE" },
 
@@ -101,7 +102,7 @@ a platform's login screen is worse than no URL — that was the problem this pas
 npm run build          # required: these values are read at build time
 ```
 
-Then deploy ([HOSTINGER_DEPLOYMENT_GUIDE.md](HOSTINGER_DEPLOYMENT_GUIDE.md) §3) and confirm:
+Then deploy (the live site is currently served by Vercel, so a merge to `master` deploys it) and confirm:
 
 ```bash
 curl -s https://infiotix.com | grep -o '"sameAs":\[[^]]*\]'
@@ -149,10 +150,12 @@ setup for software companies and it is entirely legitimate.
    Additional:     Website designer · Computer consultant · Home automation company
    Phone:          +91 70584 09290
    Website:        https://infiotix.com
-   Service areas:  Pune, Pimpri-Chinchwad, Maharashtra, India
+   Service areas:  Ahilyanagar, Maharashtra, India
    ```
+   > Ahilyanagar was officially called Ahmednagar until 2024. Use whatever Google Maps shows for
+   > your address, and keep the city spelled the same way on every other listing.
    > **Do not** put keywords in the business name ("Infiotix Technologies – Software Development
-   > Pune"). It violates Google's guidelines and can get the profile suspended. The name field
+   > Ahilyanagar"). It violates Google's guidelines and can get the profile suspended. The name field
    > must match your real trading name.
 4. **Verify** — Google will offer postcard, phone, email or video verification. Video is now
    common for Indian service-area businesses; have your office, signage and equipment ready to film
@@ -160,10 +163,10 @@ setup for software companies and it is entirely legitimate.
    - [ ] Logo (`public/images/logo-tight.png`) and cover image
    - [ ] Real photos of the office/team — stock images reduce trust
    - [ ] Opening hours (your site says 24/7 *support*; set your actual *office* hours here)
-   - [ ] Description (750 chars max) — adapt the first paragraph from `/about`, mention Pune,
+   - [ ] Description (750 chars max) — adapt the first paragraph from `/about`, mention Ahilyanagar,
          software and IoT naturally, **no keyword stuffing**
    - [ ] Services — add Hospital Management Software, School Management Software, Gym Management
-         Software, Custom Software Development, Web Application Development, Mobile Application
+         Software, CRM Software, Custom Software Development, Website Development, Web Application Development, Mobile Application
          Development, Business Automation, IoT Solutions, Home Automation, Smart Door Locks
    - [ ] Products — your four IoT products with photos
 6. **Copy your Place ID** (find it at https://developers.google.com/maps/documentation/places/web-service/place-id)
@@ -192,8 +195,8 @@ Open `src/lib/seo.ts`, find `BUSINESS_PROFILE`:
 
 ```ts
 export const BUSINESS_PROFILE = {
-  streetAddress: "",        // ← e.g. "Office 204, Example Business Park, Baner Road"
-  postalCode: "",           // ← e.g. "411045"
+  streetAddress: "",        // ← e.g. "Office 12, Example Complex, Main Road"
+  postalCode: "",           // ← the six-digit PIN code of that address
   foundingDate: "",         // ← see §4
   localBusiness: false,     // ← set true ONLY after the two above are real
 };
@@ -215,8 +218,8 @@ export const BUSINESS_PROFILE = {
 > schema asserts a physical premises. An invented one can earn a structured-data manual action in
 > Search Console, which is far worse than having no LocalBusiness schema at all.
 >
-> **Until then, nothing is wrong.** The site claims Pune/Maharashtra/India, which is true, plus
-> the new `areaServed`. That is accurate and carries zero risk.
+> **Until then, nothing is wrong.** The site claims Ahilyanagar/Maharashtra/India, which is true, plus
+> the `areaServed` list. That is accurate and carries zero risk.
 
 - [ ] `streetAddress` filled with the verified address
 - [ ] `postalCode` filled
@@ -258,7 +261,7 @@ Infiotix Technologies
 +91 70584 09290
 info@infiotix.com
 https://infiotix.com
-Pune, Maharashtra, India
+Ahilyanagar, Maharashtra, India
 ```
 
 ### Worth doing (Indian B2B / software)
@@ -272,7 +275,10 @@ Pune, Maharashtra, India
 - [ ] GoodFirms
 - [ ] Bing Places (set `BING_SITE_VERIFICATION` too — already supported in `.env.example`)
 - [ ] Apple Business Connect
-- [ ] Local Pune business / IT association directories
+- [ ] Crunchbase company profile
+- [ ] Local Ahilyanagar business, IT or industry association directories
+- [ ] If the business is registered (Udyam/MSME, MCA company or LLP, GST), the registered name
+      should match "Infiotix Technologies" exactly — sites that republish those records count too
 - [ ] GitHub organisation (§1)
 
 ### Avoid
@@ -291,8 +297,8 @@ accumulates its own signals. In rough order of effect:
 1. **§1 and §2** — real linked profiles and a verified Business Profile. These do most of the work
 2. **Submit feedback directly:** search `Infiotix Technologies` on Google. If it shows *"Showing
    results for Infinix Technologies — Search instead for Infiotix Technologies"*, **click "Search
-   instead for Infiotix Technologies"**. That click is a signal. Ask colleagues to do the same —
-   genuinely, not in bulk from one machine
+   instead for Infiotix Technologies"** whenever you genuinely search for yourself. Do not organise
+   click campaigns: coordinated clicks are an artificial signal and Google discounts them
 3. **Use the full name consistently** in every off-site profile and mention. Always "Infiotix
    Technologies", never shortened in formal listings
 4. **Earn mentions on sites Google trusts** — a guest article, a local tech meetup listing, a
