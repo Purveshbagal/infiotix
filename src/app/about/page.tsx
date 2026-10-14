@@ -140,7 +140,7 @@ export default function AboutPage() {
     <>
       <JsonLd data={simplePageGraph("about", "AboutPage")} />
       <PageHero
-        eyebrow="About Infiotix"
+        eyebrow="About Infiotix Technologies"
         title="We Build Technology That"
         highlight="Connects Lives"
         breadcrumbs={[{ label: "About" }]}

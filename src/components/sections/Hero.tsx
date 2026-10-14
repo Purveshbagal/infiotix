@@ -4,7 +4,7 @@ import Button from "@/components/ui/Button";
 import HeroVideo from "@/components/ui/HeroVideo";
 import Robot from "@/components/ui/Robot";
 import { versionedPublicUrl } from "@/lib/assets";
-import { heroFeatures, heroStats, heroTags } from "@/data/site";
+import { company, heroFeatures, heroStats, heroTags } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 export default function Hero() {
@@ -54,18 +54,24 @@ export default function Hero() {
             Ideas × Technology × A Better Tomorrow
           </p>
 
+          {/*
+            The company name leads the heading for screen readers and search engines. It is
+            visually hidden only because the logo right above already shows it and the
+            paragraph below spells it out, so the slogan design stays unchanged.
+          */}
           <h1
             id="hero-title"
             className="animate-fade-up mt-[0.75rem] text-[clamp(1.65rem,7vw,2.25rem)] leading-[1.04] font-bold tracking-[-0.005em] text-white [animation-delay:90ms] xl:fs-350 xl:leading-[1] xl:tracking-[0.004em]"
           >
+            <span className="sr-only">{company.name}: </span>
             Smart Software
             <br />
             <span className="text-gradient-brand">Smarter</span> Solutions
           </h1>
 
           {/*
-            The headline above is deliberately a slogan, so this first paragraph is where the
-            company actually names itself. Keeping "Infiotix Technologies" in the visible copy
+            The visible headline above is deliberately a slogan, so this first paragraph is where
+            the company visibly names itself. Keeping "Infiotix Technologies" in the visible copy
             above the fold is what tells a search engine which company the page is about –
             the <title> alone is a weaker signal.
           */}
