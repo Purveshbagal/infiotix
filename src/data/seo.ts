@@ -30,13 +30,12 @@ export type SeoEntry = {
 export const pageSeo = {
   home: {
     path: "/",
-    title: "Infiotix Technologies | Software & IoT Solutions in Pune",
+    title: "Infiotix Technologies | Software & IoT Solutions",
     description:
-      "Infiotix Technologies is a Pune software and IoT company: hospital, school & gym management software, smart door locks, water tank monitors, home automation.",
+      "Infiotix Technologies is a Pune-based software and IoT company building hospital, school and gym management software, custom software and smart home devices.",
     keywords: [
       "Infiotix",
       "Infiotix Technologies",
-      "Infiotix Technology",
       "Infiotix Pune",
       "software company in Pune",
       "IoT company in Pune",
@@ -238,8 +237,12 @@ export const pageSeo = {
 /*  Products (keyed by URL slug, see data/products.ts)                 */
 /* ------------------------------------------------------------------ */
 export type ProductSeo = Omit<SeoEntry, "path"> & {
-  /** schema.org node used for the product's structured data */
-  schemaType: "SoftwareApplication" | "Service" | "Product";
+  /**
+   * schema.org node used for the product's structured data. Left out for the IoT devices: they
+   * have no public price, reviews or ratings, and Google reports any `Product` without one of
+   * those as an invalid Product snippet (see productGraph in lib/schema.ts).
+   */
+  schemaType?: "SoftwareApplication" | "Service";
   /** Other names people use when searching for it */
   alternateNames: string[];
   /** Visible "About" paragraphs on the product page (natural language, keyword-rich) */
@@ -373,7 +376,6 @@ export const productSeo: Record<string, ProductSeo> = {
       title: "Smart Door Lock",
       subtitle: "Fingerprint, PIN, RFID and mobile app with remote access.",
     },
-    schemaType: "Product",
     alternateNames: ["Smart Lock", "Fingerprint Door Lock", "Digital Door Lock"],
     overview: [
       "The Infiotix Smart Door Lock is a keyless smart lock that opens with a fingerprint, PIN, RFID card or your phone. You can add several users, each with their own credentials, give or remove access remotely and review who entered and when.",
@@ -399,7 +401,6 @@ export const productSeo: Record<string, ProductSeo> = {
       title: "Water Tank Level Monitor",
       subtitle: "Live level, mobile alerts and overflow protection.",
     },
-    schemaType: "Product",
     alternateNames: ["Water Level Indicator", "Water Tank Monitor", "Tank Level Sensor"],
     overview: [
       "The Infiotix Water Tank Level Monitor is a wireless water level indicator that shows the water level in your tank live on your phone. It sends alerts when the level is low or the tank is full, helping you avoid dry taps, overflow and wasted water and electricity.",
@@ -425,7 +426,6 @@ export const productSeo: Record<string, ProductSeo> = {
       title: "Home Automation",
       subtitle: "Smarter living: lights, appliances, voice control and energy saving.",
     },
-    schemaType: "Product",
     alternateNames: ["Smart Home Automation", "Smart Home System", "Home Automation System"],
     overview: [
       "Infiotix Home Automation lets you control lights, fans and appliances from your phone or with your voice, run schedules and scenes for morning, movie night or leaving home, and save energy by switching things off automatically. Your normal switches keep working alongside the smart control.",
@@ -450,7 +450,6 @@ export const productSeo: Record<string, ProductSeo> = {
       title: "Smart Video Door Bell",
       subtitle: "See, hear and talk to visitors from your phone.",
     },
-    schemaType: "Product",
     alternateNames: ["Video Door Bell", "Smart Doorbell", "Video Doorbell"],
     overview: [
       "The Infiotix Smart Door Bell is a video door bell that lets you see, hear and talk to visitors from your phone with two-way audio. Motion detection alerts you when someone approaches, and clips can be stored in the cloud or on local storage.",
@@ -464,7 +463,7 @@ export const productSeo: Record<string, ProductSeo> = {
 /* ------------------------------------------------------------------ */
 export const homeAbout = {
   paragraphs: [
-    "Infiotix Technologies (also known as Infiotix or Infiotix Technology) is a Pune-based company that designs, builds and supports software and IoT products. Our hospital management software, school management software and gym management software help organisations run day-to-day operations from one system, while our smart door locks, water tank level monitors, home automation and video door bells make homes and workplaces safer and more connected.",
+    "Infiotix Technologies (also known as Infiotix) is a Pune-based company that designs, builds and supports software and IoT products. Our hospital management software, school management software and gym management software help organisations run day-to-day operations from one system, while our smart door locks, water tank level monitors, home automation and video door bells make homes and workplaces safer and more connected.",
     "Have something different in mind? We also build custom software for businesses of every size, and stay with you after launch with training, updates and 24/7 support.",
   ],
 };
@@ -500,7 +499,7 @@ export const listingAbout: Record<"software" | "iotProducts", { title: string; h
 export const homeFaqs: { q: string; a: string }[] = [
   {
     q: "What is Infiotix Technologies?",
-    a: "Infiotix Technologies, also searched as Infiotix or Infiotix Technology, is a software and IoT company based in Pune, Maharashtra, India. We build hospital, school and gym management software, custom software, and smart IoT products such as smart door locks, water tank level monitors, home automation and video door bells.",
+    a: "Infiotix Technologies, also known as Infiotix, is a software and IoT company based in Pune, Maharashtra, India. We build hospital, school and gym management software, custom software, and smart IoT products such as smart door locks, water tank level monitors, home automation and video door bells.",
   },
   {
     q: "Which software does Infiotix offer?",

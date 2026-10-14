@@ -14,8 +14,11 @@ import { pageSeo, productSeo, type SeoEntry } from "@/data/seo";
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://infiotix.com").replace(/\/+$/, "");
 
 export const SITE_NAME = "Infiotix Technologies";
-/** Other names people search for; used in structured data so search engines connect them */
-export const BRAND_ALIASES = ["Infiotix", "Infiotix Technology"] as const;
+/**
+ * Genuine alternate names of the company, used as `alternateName` in structured data. Only list
+ * names the company really goes by – never misspellings or other brands' names.
+ */
+export const BRAND_ALIASES = ["Infiotix"] as const;
 export const SITE_LANG = "en-IN";
 export const SITE_LOCALE = "en_IN";
 

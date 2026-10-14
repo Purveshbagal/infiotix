@@ -90,7 +90,7 @@ Everything search engines look at is generated from a few files, so a new page/p
 | ---- | ----- |
 | Titles, descriptions, keywords, share-card text, product "About" paragraphs, home FAQ | `src/data/seo.ts` |
 | Canonical URL, Open Graph + Twitter cards, robots meta (`buildMetadata`), site address (`SITE_URL`) | `src/lib/seo.ts` |
-| Structured data (Organization, WebSite, WebPage, SoftwareApplication / Service / Product, FAQPage, BreadcrumbList, ItemList) | `src/lib/schema.ts` + `src/components/seo/JsonLd.tsx` |
+| Structured data (Organization, WebSite, WebPage, SoftwareApplication / Service (no Product: no public prices or reviews), FAQPage, BreadcrumbList, ItemList) | `src/lib/schema.ts` + `src/components/seo/JsonLd.tsx` |
 | `/robots.txt`, `/sitemap.xml`, `/llms.txt` | `src/app/robots.ts`, `src/app/sitemap.ts`, `src/app/llms.txt/route.ts` |
 | 1200×630 share images (`/og/<key>`, made at build time) | `src/app/og/[key]/route.tsx` |
 

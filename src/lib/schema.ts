@@ -1,5 +1,5 @@
 import { homeFaqs, pageSeo, productSeo } from "@/data/seo";
-import { allProducts, productHref, visualFor, type ProductDetail } from "@/data/products";
+import { productHref, visualFor, type ProductDetail } from "@/data/products";
 import { company } from "@/data/site";
 import {
   absoluteUrl,
@@ -18,6 +18,8 @@ type Node = Record<string, unknown>;
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const SITE_ID = `${SITE_URL}/#website`;
+/** The official home page address of the company, as declared on its entity nodes. */
+const HOME_URL = `${SITE_URL}/`;
 
 const PHONE_INTL = "+91 70584 09290";
 
@@ -55,7 +57,7 @@ export function organizationNode(): Node {
     "@id": ORG_ID,
     name: SITE_NAME,
     alternateName: [...BRAND_ALIASES],
-    url: absoluteUrl("/"),
+    url: HOME_URL,
     logo: {
       "@type": "ImageObject",
       "@id": `${SITE_URL}/#logo`,
@@ -102,18 +104,9 @@ export function organizationNode(): Node {
       "Home automation",
       "Smart video door bells",
     ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Software and IoT solutions",
-      itemListElement: allProducts.map((product) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": productSeo[product.slug]?.schemaType ?? "Product",
-          name: product.name,
-          url: absoluteUrl(productHref(product)),
-        },
-      })),
-    },
+    // No `hasOfferCatalog` / `makesOffer` here: this node is on every page, and each typed item
+    // inside it (a bare Product with only a name and URL) is validated by Google as a Product
+    // snippet that has no price, review or rating – i.e. an invalid item on every page.
     ...(SOCIAL_PROFILES.length > 0 && { sameAs: SOCIAL_PROFILES }),
   };
 }
@@ -122,7 +115,7 @@ export function websiteNode(): Node {
   return {
     "@type": "WebSite",
     "@id": SITE_ID,
-    url: absoluteUrl("/"),
+    url: HOME_URL,
     name: SITE_NAME,
     alternateName: [...BRAND_ALIASES],
     description: pageSeo.home.description,
@@ -141,7 +134,7 @@ export function localBusinessNode(): Node {
     "@type": "ProfessionalService",
     "@id": `${SITE_URL}/#localbusiness`,
     name: SITE_NAME,
-    url: absoluteUrl("/"),
+    url: HOME_URL,
     image: absoluteUrl("/og/home"),
     logo: absoluteUrl("/images/logo-tight.png"),
     description: pageSeo.home.description,
@@ -313,7 +306,7 @@ export function productGraph(product: ProductDetail): Node {
     mainEntityOfPage: { "@id": `${url}#webpage` },
   };
 
-  let mainNode: Node;
+  let mainNode: Node | undefined;
   if (seo?.schemaType === "SoftwareApplication") {
     mainNode = {
       "@type": "SoftwareApplication",
@@ -334,31 +327,22 @@ export function productGraph(product: ProductDetail): Node {
       audience: { "@type": "Audience", audienceType: product.audience.join(", ") },
       provider: { "@id": ORG_ID },
     };
-  } else {
-    mainNode = {
-      "@type": "Product",
-      ...common,
-      brand: { "@type": "Brand", name: "Infiotix" },
-      manufacturer: { "@id": ORG_ID },
-      category: "IoT & smart home devices",
-      audience: { "@type": "Audience", audienceType: product.audience.join(", ") },
-      additionalProperty: product.features.map((feature) => ({
-        "@type": "PropertyValue",
-        name: "Feature",
-        value: feature.title,
-      })),
-    };
   }
+  // The IoT devices deliberately get no `Product` node. Google validates every Product as a
+  // Product snippet and requires `offers` (with a real price), `review` or `aggregateRating`.
+  // The devices are quoted per installation and the site publishes no prices, reviews or
+  // ratings, so a Product here is always an invalid item in Search Console – and those values
+  // must never be invented. Add a Product back only together with a real price shown on the page.
 
   return pageGraph([
     webPageNode({
       path,
       name: seo?.title ?? product.name,
       description: seo?.description ?? product.summary,
-      aboutId: productId,
+      aboutId: mainNode ? productId : undefined,
       image,
     }),
-    mainNode,
+    ...(mainNode ? [mainNode] : []),
     faqNode(path, product.faqs),
   ]);
 }

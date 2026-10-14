@@ -28,7 +28,7 @@ secondary.
 | Signal | Status |
 | --- | --- |
 | Consistent business name — "Infiotix Technologies" everywhere | ✅ `src/data/site.ts` |
-| Brand aliases declared ("Infiotix", "Infiotix Technology") | ✅ `alternateName` in Organization + WebSite schema |
+| Brand alias declared ("Infiotix") | ✅ `alternateName` in Organization + WebSite schema |
 | Consistent phone — `+91 70584 09290` | ✅ Same in header, footer, contact page, schema |
 | Consistent email — `info@infiotix.com` | ✅ Same everywhere |
 | City/region/country in structured data | ✅ Pune / Maharashtra / IN |

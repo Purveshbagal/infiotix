@@ -1,7 +1,7 @@
 import { allProducts, iotDetails, productHref, softwareDetails } from "@/data/products";
 import { company } from "@/data/site";
 import { pageSeo, productSeo } from "@/data/seo";
-import { absoluteUrl, SITE_NAME } from "@/lib/seo";
+import { absoluteUrl, BRAND_ALIASES, SITE_NAME } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
@@ -17,7 +17,7 @@ export function GET() {
     "",
     `> ${pageSeo.home.description}`,
     "",
-    `${SITE_NAME} (also known as Infiotix or Infiotix Technology) is a software and IoT company based in ${company.location}. ` +
+    `${SITE_NAME} (also known as ${BRAND_ALIASES.join(" or ")}) is a software and IoT company based in ${company.location}. ` +
       `Contact: ${company.phone}, ${company.email}.`,
     "",
     "## Software",
