@@ -121,8 +121,10 @@ export const OG_SIZE = { width: 1200, height: 630 } as const;
 
 export function absoluteUrl(path = "/"): string {
   if (/^https?:\/\//.test(path)) return path;
-  // the home page is written without a trailing slash everywhere (canonical, sitemap, schema)
-  if (path === "/" || path === "") return SITE_URL;
+  // The home page is written as https://infiotix.com/ in the sitemap and structured data. Next.js
+  // itself prints a root canonical / og:url without the slash ("https://infiotix.com"); for a
+  // root URL the two forms are the same address, so both point Google at one canonical page.
+  if (path === "/" || path === "") return `${SITE_URL}/`;
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
