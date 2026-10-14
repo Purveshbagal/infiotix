@@ -111,7 +111,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ key
           }}
         >
           <div style={{ display: "flex", color: "#22c8f5" }}>{host}</div>
-          <div style={{ display: "flex" }}>Software · IoT · Pune, India</div>
+          <div style={{ display: "flex" }}>Software · IoT · Ahilyanagar, India</div>
         </div>
       </div>
     ),

@@ -5,6 +5,7 @@ import {
   absoluteUrl,
   AREAS_SERVED,
   BRAND_ALIASES,
+  BUSINESS_CITY,
   BUSINESS_PROFILE,
   SITE_LANG,
   SITE_NAME,
@@ -34,12 +35,20 @@ function postalAddressNode(): Node {
   return {
     "@type": "PostalAddress",
     ...(BUSINESS_PROFILE.streetAddress && { streetAddress: BUSINESS_PROFILE.streetAddress }),
-    addressLocality: "Pune",
+    addressLocality: BUSINESS_CITY.name,
     addressRegion: "Maharashtra",
     ...(BUSINESS_PROFILE.postalCode && { postalCode: BUSINESS_PROFILE.postalCode }),
     addressCountry: "IN",
   };
 }
+
+/** Where the company works; the city also carries its former name, Ahmednagar. */
+const areaServedNodes = (): Node[] =>
+  AREAS_SERVED.map((area) => ({
+    "@type": area.type,
+    name: area.name,
+    ...("alternateName" in area && { alternateName: area.alternateName }),
+  }));
 
 /** True only when a real street address is on file, which is what LocalBusiness requires. */
 const hasVerifiedAddress = () =>
@@ -74,7 +83,7 @@ export function organizationNode(): Node {
     telephone: PHONE_INTL,
     address: postalAddressNode(),
     // Where the company actually works, which is what local searches are matched against.
-    areaServed: AREAS_SERVED.map((area) => ({ "@type": area.type, name: area.name })),
+    areaServed: areaServedNodes(),
     ...(BUSINESS_PROFILE.foundingDate && { foundingDate: BUSINESS_PROFILE.foundingDate }),
     contactPoint: [
       {
@@ -98,6 +107,9 @@ export function organizationNode(): Node {
       "School management software",
       "Gym management software",
       "Custom software development",
+      "CRM software",
+      "Website development",
+      "Business process automation",
       "Internet of Things",
       "Smart door locks",
       "Water tank level monitoring",
@@ -125,7 +137,7 @@ export function websiteNode(): Node {
 }
 
 /**
- * LocalBusiness for the Pune office, emitted only once a verified street address exists.
+ * LocalBusiness for the Ahilyanagar office, emitted only once a verified street address exists.
  * It deliberately carries no `aggregateRating`, `review` or `priceRange`: those must come from
  * real data, and inventing them is exactly what triggers a structured-data manual action.
  */
@@ -141,7 +153,7 @@ export function localBusinessNode(): Node {
     telephone: PHONE_INTL,
     email: company.email,
     address: postalAddressNode(),
-    areaServed: AREAS_SERVED.map((area) => ({ "@type": area.type, name: area.name })),
+    areaServed: areaServedNodes(),
     parentOrganization: { "@id": ORG_ID },
   };
 }
@@ -240,8 +252,17 @@ type PageKey = keyof typeof pageSeo;
 /** WebPage (or AboutPage / ContactPage) for a page listed in data/seo.ts, plus optional extras. */
 export function simplePageGraph(key: PageKey, type: PageType = "WebPage", extra: Node[] = []): Node {
   const seo = pageSeo[key];
+  // The About and Contact pages are about the company itself, so they name the Organization as
+  // their main entity – one of the signals Google uses to tie the site to the brand.
+  const aboutCompany = type === "AboutPage" || type === "ContactPage";
   return pageGraph([
-    webPageNode({ path: seo.path, name: seo.title, description: seo.description, type }),
+    webPageNode({
+      path: seo.path,
+      name: seo.title,
+      description: seo.description,
+      type,
+      ...(aboutCompany && { mainEntity: { "@id": ORG_ID } }),
+    }),
     ...extra,
   ]);
 }

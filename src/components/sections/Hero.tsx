@@ -50,30 +50,30 @@ export default function Hero() {
       {/* ---------------------------------------------------------- */}
       <div className="mx-auto max-w-[110rem] px-5 [--type-scale:0.84] sm:px-8 xl:px-[5rem] xl:[--type-scale:0.86]">
         <div className="pt-10 pb-14 sm:pt-14 xl:pt-[3.3rem] xl:pb-[2.4rem]">
-          <p className="eyebrow animate-fade-up bg-gradient-to-r from-[#4f8cff] to-[#8a7bff] bg-clip-text fs-62 tracking-[0.2em] text-transparent sm:fs-72 sm:tracking-[0.32em]">
-            Ideas × Technology × A Better Tomorrow
-          </p>
-
           {/*
-            The company name leads the heading for screen readers and search engines. It is
-            visually hidden only because the logo right above already shows it and the
-            paragraph below spells it out, so the slogan design stays unchanged.
+            The page's <h1> names the company and what it does, in the small gradient line above
+            the slogan (same styling the line always had). The big slogan below is a styled
+            paragraph, so the design is unchanged while the main heading – a strong signal of
+            what the page is about – reads "Infiotix Technologies: Software Development & IoT
+            Solutions", matching the <title>.
           */}
           <h1
             id="hero-title"
-            className="animate-fade-up mt-[0.75rem] text-[clamp(1.65rem,7vw,2.25rem)] leading-[1.04] font-bold tracking-[-0.005em] text-white [animation-delay:90ms] xl:fs-350 xl:leading-[1] xl:tracking-[0.004em]"
+            className="eyebrow animate-fade-up bg-gradient-to-r from-[#4f8cff] to-[#8a7bff] bg-clip-text fs-62 tracking-[0.2em] text-transparent sm:fs-72 sm:tracking-[0.32em]"
           >
-            <span className="sr-only">{company.name}: </span>
+            {`${company.name}: Software Development & IoT Solutions`}
+          </h1>
+
+          <p className="animate-fade-up mt-[0.75rem] text-[clamp(1.65rem,7vw,2.25rem)] leading-[1.04] font-bold tracking-[-0.005em] text-white [animation-delay:90ms] xl:fs-350 xl:leading-[1] xl:tracking-[0.004em]">
             Smart Software
             <br />
             <span className="text-gradient-brand">Smarter</span> Solutions
-          </h1>
+          </p>
 
           {/*
-            The visible headline above is deliberately a slogan, so this first paragraph is where
-            the company visibly names itself. Keeping "Infiotix Technologies" in the visible copy
-            above the fold is what tells a search engine which company the page is about –
-            the <title> alone is a weaker signal.
+            Keeping "Infiotix Technologies" in the visible copy above the fold, as well as in the
+            heading, is what tells a search engine which company the page is about – the <title>
+            alone is a weaker signal.
           */}
           <p className="animate-fade-up mt-[0.8rem] max-w-[34rem] fs-102 leading-[1.55] text-slate-200/95 [animation-delay:170ms] xl:max-w-none xl:fs-108 xl:leading-[1.46]">
             Infiotix Technologies builds intelligent software and IoT solutions

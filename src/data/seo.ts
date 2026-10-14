@@ -4,7 +4,7 @@
  *
  * Kept free of imports on purpose so it can be linted / length-checked with plain Node.
  * Guidelines used: title <= ~60 characters, description <= ~160 characters, every page has a
- * unique title and description, brand name + product keyword + "Pune" where it is natural.
+ * unique title and description, brand name + product keyword + "Ahilyanagar" where it is natural.
  */
 
 export type OgCard = {
@@ -30,80 +30,84 @@ export type SeoEntry = {
 export const pageSeo = {
   home: {
     path: "/",
-    title: "Infiotix Technologies | Software & IoT Solutions",
+    title: "Infiotix Technologies | Software Development & IoT Solutions",
     description:
-      "Infiotix Technologies is a Pune-based software and IoT company building hospital, school and gym management software, custom software and smart home devices.",
+      "Infiotix Technologies is a software development and IoT company in Ahilyanagar, Maharashtra, India, building business software, CRM, websites and apps.",
     keywords: [
       "Infiotix",
       "Infiotix Technologies",
-      "Infiotix Pune",
-      "software company in Pune",
-      "IoT company in Pune",
+      "Infiotix Ahilyanagar",
+      "software company in Ahilyanagar",
+      "IoT company in Ahilyanagar",
       "hospital management software",
       "school management software",
       "gym management software",
+      "CRM software",
+      "website development",
       "smart door lock",
       "home automation",
     ],
     og: {
       key: "home",
-      label: "Software & IoT · Pune",
+      label: "Software & IoT · Ahilyanagar",
       title: "Smart Software. Smarter Solutions.",
       subtitle: "Intelligent software and IoT solutions for a smarter, safer and more connected world.",
     },
   },
   about: {
     path: "/about",
-    title: "About Infiotix Technologies | Software & IoT Company, Pune",
+    title: "About Infiotix Technologies | Software & IoT, Ahilyanagar",
     description:
-      "Infiotix Technologies is a Pune-based software and IoT company building smart, reliable, connected solutions for hospitals, schools, gyms, homes and businesses.",
+      "Infiotix Technologies is a software and IoT company in Ahilyanagar, Maharashtra, building management software, CRM, websites and smart devices.",
     keywords: [
       "about Infiotix",
-      "Infiotix Technologies Pune",
+      "Infiotix Technologies Ahilyanagar",
       "software and IoT company",
-      "software development company Pune",
-      "IoT solutions provider Pune",
+      "software development company Ahilyanagar",
+      "IoT solutions provider Ahilyanagar",
     ],
     og: {
       key: "about",
       label: "About us",
       title: "About Infiotix Technologies",
-      subtitle: "A Pune-based software and IoT company building connected solutions.",
+      subtitle: "A software and IoT company in Ahilyanagar, Maharashtra, building connected solutions.",
     },
   },
   software: {
     path: "/software",
     title: "Hospital, School & Gym Management Software | Infiotix",
     description:
-      "Hospital, school and gym management software plus custom software development from Infiotix Technologies, Pune. Free demo and 24/7 support.",
+      "Hospital, school and gym management software, CRM, custom software and website development from Infiotix Technologies, Ahilyanagar. Free demo and 24/7 support.",
     keywords: [
       "management software",
       "hospital management software",
       "school management software",
       "gym management software",
       "custom software development",
-      "software company in Pune",
+      "CRM software",
+      "website development",
+      "software company in Ahilyanagar",
       "Infiotix software",
     ],
     og: {
       key: "software",
       label: "Software",
       title: "Management Software for Hospitals, Schools & Gyms",
-      subtitle: "Plus fully custom software built around your business.",
+      subtitle: "Plus CRM, websites and fully custom software for your business.",
     },
   },
   iotProducts: {
     path: "/iot-products",
     title: "Smart Door Lock, Tank Monitor & Home Automation | Infiotix",
     description:
-      "Smart door locks, water tank level monitors, home automation and video door bells from Infiotix Technologies, Pune. IoT products for home, office and farm.",
+      "Smart door locks, water tank level monitors, home automation and video door bells from Infiotix Technologies, Ahilyanagar, for homes, offices and farms.",
     keywords: [
       "IoT products",
       "smart door lock",
       "water tank level monitor",
       "home automation",
       "smart video door bell",
-      "IoT company in Pune",
+      "IoT company in Ahilyanagar",
       "Infiotix IoT",
     ],
     og: {
@@ -117,7 +121,7 @@ export const pageSeo = {
     path: "/solutions",
     title: "Software & IoT Solutions for Every Industry | Infiotix",
     description:
-      "Software and IoT solutions for healthcare, education, fitness, homes, agriculture and retail, plus AI, embedded systems, business automation and cloud. Pune.",
+      "Software and IoT solutions for healthcare, education, fitness, homes, agriculture and retail, plus AI, embedded systems, automation and cloud. Ahilyanagar.",
     keywords: [
       "software solutions for hospitals",
       "software solutions for schools",
@@ -140,7 +144,7 @@ export const pageSeo = {
     path: "/projects",
     title: "Software & IoT Projects | Infiotix Technologies",
     description:
-      "Explore the hospital, school and gym software and the smart IoT products designed, built and supported by Infiotix Technologies in Pune.",
+      "Explore the hospital, school and gym software and the smart IoT products designed, built and supported by Infiotix Technologies in Ahilyanagar.",
     keywords: [
       "software projects",
       "IoT projects",
@@ -176,13 +180,13 @@ export const pageSeo = {
   },
   contact: {
     path: "/contact",
-    title: "Contact Infiotix Technologies | Pune, Maharashtra",
+    title: "Contact Infiotix Technologies | Ahilyanagar, Maharashtra",
     description:
-      "Contact Infiotix Technologies in Pune. Call 70584 09290, WhatsApp or email info@infiotix.com for a free consultation on your software or IoT project.",
+      "Contact Infiotix Technologies in Ahilyanagar. Call 70584 09290, WhatsApp or email info@infiotix.com for a free consultation on your software or IoT project.",
     keywords: [
       "contact Infiotix",
-      "Infiotix Technologies Pune contact",
-      "software company Pune contact",
+      "Infiotix Technologies Ahilyanagar contact",
+      "software company Ahilyanagar contact",
       "free consultation",
       "request a quote",
     ],
@@ -190,7 +194,7 @@ export const pageSeo = {
       key: "contact",
       label: "Contact",
       title: "Let's Build a Smarter Tomorrow Together",
-      subtitle: "Call 70584 09290 · info@infiotix.com · Pune, Maharashtra",
+      subtitle: "Call 70584 09290 · info@infiotix.com · Ahilyanagar, Maharashtra",
     },
   },
   privacy: {
@@ -251,13 +255,13 @@ export type ProductSeo = Omit<SeoEntry, "path"> & {
 
 export const productSeo: Record<string, ProductSeo> = {
   "hospital-management-system": {
-    title: "Hospital Management Software in Pune | Infiotix",
+    title: "Hospital Management Software in Ahilyanagar | Infiotix",
     description:
-      "Hospital management software for clinics and hospitals: OPD, IPD, billing, lab, pharmacy and reports in one system. Free demo from Infiotix Technologies, Pune.",
+      "Hospital management software for clinics and hospitals: OPD, IPD, billing, lab, pharmacy and reports in one system. Free demo from Infiotix, Ahilyanagar.",
     keywords: [
       "hospital management software",
       "hospital management system",
-      "hospital software in Pune",
+      "hospital software in Ahilyanagar",
       "clinic management software",
       "OPD IPD billing software",
       "HMS software",
@@ -275,18 +279,18 @@ export const productSeo: Record<string, ProductSeo> = {
     alternateNames: ["Hospital Management Software", "Hospital Software", "HMS Software", "Clinic Management Software"],
     overview: [
       "Infiotix Hospital Management System is hospital management software that brings patient records, OPD appointments, IPD and bed management, billing, laboratory and pharmacy into one connected platform. Every department works from the same patient record, so front-desk staff, doctors, nurses, lab technicians and accounts teams spend less time on paperwork and duplicate entry.",
-      "Built by Infiotix Technologies in Pune, the software suits clinics, nursing homes, multi-specialty hospitals and diagnostic labs. We configure the modules, forms, user roles, reports and invoice formats around your workflow, train your staff at go-live and stay available with 24/7 support afterwards. Start with the modules you need, such as OPD and billing, and add IPD, lab and pharmacy as you grow.",
+      "Built by Infiotix Technologies in Ahilyanagar, the software suits clinics, nursing homes, multi-specialty hospitals and diagnostic labs. We configure the modules, forms, user roles, reports and invoice formats around your workflow, train your staff at go-live and stay available with 24/7 support afterwards. Start with the modules you need, such as OPD and billing, and add IPD, lab and pharmacy as you grow.",
     ],
   },
   "school-management-system": {
-    title: "School Management Software in Pune | Infiotix",
+    title: "School Management Software in Ahilyanagar | Infiotix",
     description:
-      "School management software with admissions, fees, attendance, exams, transport and parent communication. Free demo from Infiotix Technologies, Pune.",
+      "School management software with admissions, fees, attendance, exams, transport and parent communication. Free demo from Infiotix Technologies, Ahilyanagar.",
     keywords: [
       "school management software",
       "school management system",
       "school ERP software",
-      "school software in Pune",
+      "school software in Ahilyanagar",
       "fee management software",
       "school attendance software",
       "exam and result software",
@@ -302,20 +306,20 @@ export const productSeo: Record<string, ProductSeo> = {
     alternateNames: ["School Management Software", "School Software", "School ERP", "School ERP Software"],
     overview: [
       "Infiotix School Management System is school management software (often called school ERP) that handles admissions, fee collection, attendance, exams and results, timetables, transport and parent communication from a single dashboard. Administrators, teachers, students and parents each get their own login, so everyone sees exactly what they need.",
-      "Made in Pune by Infiotix Technologies, the software is set up around your board, classes, grading system and academic calendar. It suits schools, junior colleges, coaching classes, pre-primary schools and education trusts, and comes with staff training at launch and ongoing support, including 24/7 help for urgent issues.",
+      "Made in Ahilyanagar by Infiotix Technologies, the software is set up around your board, classes, grading system and academic calendar. It suits schools, junior colleges, coaching classes, pre-primary schools and education trusts, and comes with staff training at launch and ongoing support, including 24/7 help for urgent issues.",
     ],
   },
   "gym-management-system": {
     title: "Gym Management Software with Biometric Attendance | Infiotix",
     description:
-      "Gym management software for memberships, biometric attendance, plans, payments and reports. Easy for front-desk staff. From Infiotix Technologies, Pune.",
+      "Gym management software for memberships, biometric attendance, plans, payments and reports. Easy for front-desk staff. From Infiotix Technologies, Ahilyanagar.",
     keywords: [
       "gym management software",
       "gym management system",
       "gym membership software",
       "biometric attendance for gym",
       "fitness studio software",
-      "gym software in Pune",
+      "gym software in Ahilyanagar",
       "Infiotix gym management system",
     ],
     og: {
@@ -328,18 +332,20 @@ export const productSeo: Record<string, ProductSeo> = {
     alternateNames: ["Gym Management Software", "Gym Software", "Gym Membership Software"],
     overview: [
       "Infiotix Gym Management System is gym management software for memberships, biometric fingerprint attendance, plans and packages, payments, renewals and reports. Front-desk staff can register a member, mark attendance and collect fees in a few clicks, while owners see collections and member activity at a glance.",
-      "It suits gyms, fitness studios, yoga and Zumba centres, health clubs and personal trainers, and works for one branch or several. Because Infiotix builds both software and IoT, it can also be paired with a Smart Door Lock so only active members can walk in. Designed and supported from Pune.",
+      "It suits gyms, fitness studios, yoga and Zumba centres, health clubs and personal trainers, and works for one branch or several. Because Infiotix builds both software and IoT, it can also be paired with a Smart Door Lock so only active members can walk in. Designed and supported from Ahilyanagar.",
     ],
   },
   "custom-software-development": {
-    title: "Custom Software Development Company in Pune | Infiotix",
+    title: "Custom Software, CRM & Website Development | Infiotix",
     description:
-      "Custom web and mobile software development in Pune: tailor-made apps, dashboards, integrations and automation with 24/7 support from Infiotix Technologies.",
+      "Custom software, CRM and website development in Ahilyanagar: web and mobile apps, dashboards, integrations and automation from Infiotix Technologies.",
     keywords: [
       "custom software development",
-      "software development company in Pune",
+      "software development company in Ahilyanagar",
+      "CRM software development",
+      "custom website development",
       "custom web application development",
-      "mobile app development Pune",
+      "mobile app development Ahilyanagar",
       "software development services",
       "workflow automation software",
       "Infiotix custom software",
@@ -348,25 +354,25 @@ export const productSeo: Record<string, ProductSeo> = {
       key: "custom-software-development",
       label: "Software",
       title: "Custom Software Development",
-      subtitle: "Tailor-made web and mobile software for your business needs.",
+      subtitle: "Tailor-made software, CRM and websites for your business needs.",
     },
     schemaType: "Service",
-    alternateNames: ["Custom Software Development", "Software Development Company in Pune", "Custom Software Company"],
+    alternateNames: ["Custom Software Development", "CRM Software Development", "Custom Website Development"],
     overview: [
-      "Infiotix Technologies is a software development company in Pune building custom web applications, mobile apps, dashboards, integrations and workflow automation around the way your business actually works. We plan the scope with you, build in stages with regular demos, deploy to reliable cloud hosting and support the software after launch.",
+      "Infiotix Technologies is a software development company in Ahilyanagar building custom web applications, business websites, CRM software, mobile apps, dashboards, integrations and workflow automation around the way your business actually works. We plan the scope with you, build in stages with regular demos, deploy to reliable cloud hosting and support the software after launch.",
       "Whether you are a startup, a growing business, an institution or an enterprise, one team looks after design, development, hosting and support. Share your idea in a free consultation and we will suggest the right approach, a clear plan and a no-obligation quote.",
     ],
   },
   "smart-door-lock": {
     title: "Smart Door Lock with Fingerprint, PIN & RFID | Infiotix",
     description:
-      "Smart door lock that opens with fingerprint, PIN, RFID card or phone. Remote access, access history and professional installation by Infiotix, Pune.",
+      "Smart door lock that opens with fingerprint, PIN, RFID card or phone. Remote access, access history and professional installation by Infiotix, Ahilyanagar.",
     keywords: [
       "smart door lock",
       "fingerprint door lock",
       "RFID door lock",
       "digital door lock",
-      "smart lock in Pune",
+      "smart lock in Ahilyanagar",
       "keyless entry door lock",
       "Infiotix smart door lock",
     ],
@@ -379,13 +385,13 @@ export const productSeo: Record<string, ProductSeo> = {
     alternateNames: ["Smart Lock", "Fingerprint Door Lock", "Digital Door Lock"],
     overview: [
       "The Infiotix Smart Door Lock is a keyless smart lock that opens with a fingerprint, PIN, RFID card or your phone. You can add several users, each with their own credentials, give or remove access remotely and review who entered and when.",
-      "It suits homes, apartments, offices, PGs and hostels, and shops. Our team in Pune handles installation and set-up, pairs the lock with the mobile app and stays available for support. It can also be combined with the Smart Door Bell and Home Automation for a complete connected entrance.",
+      "It suits homes, apartments, offices, PGs and hostels, and shops. Our team in Ahilyanagar handles installation and set-up, pairs the lock with the mobile app and stays available for support. It can also be combined with the Smart Door Bell and Home Automation for a complete connected entrance.",
     ],
   },
   "water-tank-level-monitor": {
     title: "Water Tank Level Monitor with Mobile Alerts | Infiotix",
     description:
-      "Wireless water tank level monitor with live level on your phone, low-level alerts and overflow protection for homes, societies and farms. Infiotix, Pune.",
+      "Wireless water tank level monitor with live level on your phone, low-level alerts and overflow protection for homes, societies and farms. Infiotix, Ahilyanagar.",
     keywords: [
       "water tank level monitor",
       "water level indicator",
@@ -404,18 +410,18 @@ export const productSeo: Record<string, ProductSeo> = {
     alternateNames: ["Water Level Indicator", "Water Tank Monitor", "Tank Level Sensor"],
     overview: [
       "The Infiotix Water Tank Level Monitor is a wireless water level indicator that shows the water level in your tank live on your phone. It sends alerts when the level is low or the tank is full, helping you avoid dry taps, overflow and wasted water and electricity.",
-      "It suits homes, housing societies, farms, schools and institutions, and factories, and can monitor more than one tank. Pump automation is available on request so the pump starts and stops on its own. Installation and support are provided by Infiotix Technologies, Pune.",
+      "It suits homes, housing societies, farms, schools and institutions, and factories, and can monitor more than one tank. Pump automation is available on request so the pump starts and stops on its own. Installation and support are provided by Infiotix Technologies, Ahilyanagar.",
     ],
   },
   "home-automation": {
     title: "Home Automation System for Smart Homes | Infiotix",
     description:
-      "Control lights, fans and appliances from your phone or voice. Smart home automation with scenes, schedules and energy saving from Infiotix, Pune.",
+      "Control lights, fans and appliances from your phone or voice. Smart home automation with scenes, schedules and energy saving from Infiotix, Ahilyanagar.",
     keywords: [
       "home automation",
       "home automation system",
       "smart home automation",
-      "smart home in Pune",
+      "smart home in Ahilyanagar",
       "voice control home automation",
       "lights and appliance control app",
       "Infiotix home automation",
@@ -429,13 +435,13 @@ export const productSeo: Record<string, ProductSeo> = {
     alternateNames: ["Smart Home Automation", "Smart Home System", "Home Automation System"],
     overview: [
       "Infiotix Home Automation lets you control lights, fans and appliances from your phone or with your voice, run schedules and scenes for morning, movie night or leaving home, and save energy by switching things off automatically. Your normal switches keep working alongside the smart control.",
-      "We plan the set-up around your existing wiring for villas, bungalows, apartments, offices and hospitality spaces, start with a few rooms and let you expand step by step. Add a Smart Door Lock or a video Smart Door Bell for enhanced security. Installed and supported by Infiotix Technologies in Pune.",
+      "We plan the set-up around your existing wiring for villas, bungalows, apartments, offices and hospitality spaces, start with a few rooms and let you expand step by step. Add a Smart Door Lock or a video Smart Door Bell for enhanced security. Installed and supported by Infiotix Technologies in Ahilyanagar.",
     ],
   },
   "smart-door-bell": {
     title: "Smart Video Door Bell with Two-Way Audio | Infiotix",
     description:
-      "Smart video door bell with live view, two-way audio, motion detection and stored clips on your phone. Installation and support by Infiotix, Pune.",
+      "Smart video door bell with live view, two-way audio, motion detection and stored clips on your phone. Installation and support by Infiotix, Ahilyanagar.",
     keywords: [
       "smart door bell",
       "video door bell",
@@ -453,7 +459,7 @@ export const productSeo: Record<string, ProductSeo> = {
     alternateNames: ["Video Door Bell", "Smart Doorbell", "Video Doorbell"],
     overview: [
       "The Infiotix Smart Door Bell is a video door bell that lets you see, hear and talk to visitors from your phone with two-way audio. Motion detection alerts you when someone approaches, and clips can be stored in the cloud or on local storage.",
-      "Answer the bell from anywhere, never miss a delivery and review clips when you need them. It suits homes, apartments, offices and shops, and pairs with a Smart Door Lock and Home Automation. Installation and support by Infiotix Technologies, Pune.",
+      "Answer the bell from anywhere, never miss a delivery and review clips when you need them. It suits homes, apartments, offices and shops, and pairs with a Smart Door Lock and Home Automation. Installation and support by Infiotix Technologies, Ahilyanagar.",
     ],
   },
 };
@@ -463,8 +469,8 @@ export const productSeo: Record<string, ProductSeo> = {
 /* ------------------------------------------------------------------ */
 export const homeAbout = {
   paragraphs: [
-    "Infiotix Technologies (also known as Infiotix) is a Pune-based company that designs, builds and supports software and IoT products. Our hospital management software, school management software and gym management software help organisations run day-to-day operations from one system, while our smart door locks, water tank level monitors, home automation and video door bells make homes and workplaces safer and more connected.",
-    "Have something different in mind? We also build custom software for businesses of every size, and stay with you after launch with training, updates and 24/7 support.",
+    "Infiotix Technologies (also known as Infiotix) is an Ahilyanagar-based company that designs, builds and supports software and IoT products. Our hospital management software, school management software and gym management software help organisations run day-to-day operations from one system, while our smart door locks, water tank level monitors, home automation and video door bells make homes and workplaces safer and more connected.",
+    "We also build CRM software, custom websites, web and mobile applications and fully custom software for businesses of every size, automate manual processes, and stay with you after launch with training, updates and 24/7 support.",
   ],
 };
 
@@ -480,17 +486,17 @@ export const homeAbout = {
 export const listingAbout: Record<"software" | "iotProducts", { title: string; highlight: string; paragraphs: string[] }> = {
   software: {
     title: "Software development company",
-    highlight: "in Pune",
+    highlight: "in Ahilyanagar",
     paragraphs: [
-      "Infiotix Technologies is a software development company in Pune building business management software and custom applications. Alongside our ready-to-use Hospital, School and Gym Management Systems, we take on custom software development: web application development for portals and internal tools, mobile application development for Android and iOS, reporting dashboards, and integrations with payment, messaging and accounting systems.",
+      "Infiotix Technologies is a software development company in Ahilyanagar building business management software and custom applications. Alongside our ready-to-use Hospital, School and Gym Management Systems, we take on custom software development: CRM software, business websites, web application development for portals and internal tools, mobile application development for Android and iOS, reporting dashboards, and integrations with payment, messaging and accounting systems.",
       "A large part of our work is business automation: replacing manual registers, spreadsheets and repeated data entry with software that handles approvals, reminders and day-to-day tasks on its own. We scope the work with you first, build in stages with regular demos, deploy to reliable cloud hosting, train your team at go-live and stay available with 24/7 support afterwards.",
     ],
   },
   iotProducts: {
     title: "IoT solutions company",
-    highlight: "in Pune",
+    highlight: "in Ahilyanagar",
     paragraphs: [
-      "Infiotix Technologies is an IoT solutions company in Pune that designs, builds, installs and supports connected devices. Our Smart Door Lock, Water Tank Level Monitor, Home Automation and Smart Door Bell are ready to order, and each one is installed and set up by our own team rather than handed over in a box.",
+      "Infiotix Technologies is an IoT solutions company in Ahilyanagar that designs, builds, installs and supports connected devices. Our Smart Door Lock, Water Tank Level Monitor, Home Automation and Smart Door Bell are ready to order, and each one is installed and set up by our own team rather than handed over in a box.",
       "Because we build the embedded firmware, the mobile app and the cloud side ourselves, we also take on custom IoT projects: sensors and controllers for a specific process, device-to-cloud dashboards, and automation that reacts to what the sensors report. If you need something that is not on this page, tell us what you want to measure or control and we will suggest a practical approach.",
     ],
   },
@@ -499,11 +505,11 @@ export const listingAbout: Record<"software" | "iotProducts", { title: string; h
 export const homeFaqs: { q: string; a: string }[] = [
   {
     q: "What is Infiotix Technologies?",
-    a: "Infiotix Technologies, also known as Infiotix, is a software and IoT company based in Pune, Maharashtra, India. We build hospital, school and gym management software, custom software, and smart IoT products such as smart door locks, water tank level monitors, home automation and video door bells.",
+    a: "Infiotix Technologies, also known as Infiotix, is a software and IoT company based in Ahilyanagar (formerly Ahmednagar), Maharashtra, India. We build hospital, school and gym management software, CRM software, custom websites and custom software, and smart IoT products such as smart door locks, water tank level monitors, home automation and video door bells.",
   },
   {
     q: "Which software does Infiotix offer?",
-    a: "Hospital Management System, School Management System, Gym Management System and fully Custom Software Development. Each can be tailored to your workflow, and we train your team and support you after go-live.",
+    a: "Hospital Management System, School Management System, Gym Management System and fully Custom Software Development, including CRM software and custom websites. Each can be tailored to your workflow, and we train your team and support you after go-live.",
   },
   {
     q: "Which IoT products does Infiotix offer?",
@@ -511,11 +517,11 @@ export const homeFaqs: { q: string; a: string }[] = [
   },
   {
     q: "Can Infiotix build custom software for my business?",
-    a: "Yes. We design, build and support custom web and mobile software, dashboards, integrations and workflow automation. Share your idea in a free consultation and we will suggest an approach, a clear plan and a no-obligation quote.",
+    a: "Yes. We design, build and support custom websites, CRM software, web and mobile apps, dashboards, integrations and workflow automation. Share your idea in a free consultation and we will suggest an approach, a clear plan and a no-obligation quote.",
   },
   {
     q: "Where is Infiotix located and how can I contact the team?",
-    a: "Infiotix Technologies is based in Pune, Maharashtra, India. Call 70584 09290, chat on WhatsApp or email info@infiotix.com. Customers get 24/7 support.",
+    a: "Infiotix Technologies is based in Ahilyanagar, Maharashtra, India. Call 70584 09290, chat on WhatsApp or email info@infiotix.com. Customers get 24/7 support.",
   },
 ];
 

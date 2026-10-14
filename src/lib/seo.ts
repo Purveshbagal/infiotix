@@ -51,7 +51,10 @@ export type SocialProfile = {
   footer?: boolean;
 };
 
-export const socialProfiles: SocialProfile[] = [];
+export const socialProfiles: SocialProfile[] = [
+  // Canonical profile address (no share-tracking query string).
+  { platform: "Instagram", url: "https://www.instagram.com/infiotixtechnologies/" },
+];
 
 /** Profile URLs for the Organization `sameAs` list. */
 export const SOCIAL_PROFILES: string[] = socialProfiles.map((profile) => profile.url);
@@ -87,9 +90,9 @@ export const BUSINESS_PROFILE: {
   foundingDate: string;
   localBusiness: boolean;
 } = {
-  /** e.g. "Office 204, Example Business Park, Baner Road" – leave "" until verified. */
+  /** e.g. "Office 12, Example Complex, Main Road" – leave "" until verified. */
   streetAddress: "",
-  /** e.g. "411045" – leave "" until verified. */
+  /** The six-digit PIN code of that address – leave "" until verified. */
   postalCode: "",
   /** e.g. "2020" or "2020-06-01" – leave "" until known. */
   foundingDate: "",
@@ -100,9 +103,16 @@ export const BUSINESS_PROFILE: {
   localBusiness: false,
 };
 
+/**
+ * Where Infiotix Technologies is based, used for the PostalAddress. Ahilyanagar is the city's
+ * official name since 2024; many people and directories still call it Ahmednagar, so the old
+ * name is declared as an alternate name rather than as a separate place.
+ */
+export const BUSINESS_CITY = { name: "Ahilyanagar", formerName: "Ahmednagar" } as const;
+
 /** The places Infiotix Technologies serves. Already stated in the visible site copy. */
 export const AREAS_SERVED = [
-  { type: "City", name: "Pune" },
+  { type: "City", name: BUSINESS_CITY.name, alternateName: BUSINESS_CITY.formerName },
   { type: "AdministrativeArea", name: "Maharashtra" },
   { type: "Country", name: "India" },
 ] as const;
